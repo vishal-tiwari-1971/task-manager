@@ -15,19 +15,19 @@ const auth = require('../Middleware/auth');
 //     }
 // };
 
-// Get journal entries by id
-// exports.getEntryById = async (req, res) => {
-//     try {
-//         const journals = await Journal.findById(req.params.id);
+// Get task by id
+exports.getTaskById = async (req, res) => {
+    try {
+        const task = await Task.findById(req.params.id);
 
-//         return res.status(200).json(journals);
-//     } catch (error) {
-//         console.log(error);
-//         return res.status(500).send("Error retrieving journal entries.");
-//     }
-// };
+        return res.status(200).json(task);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error retrieving task.");
+    }
+};
 
-// Get journal by User Id
+// Get task by User Id
 exports.getUserTask = [auth, async (req, res) => {
     try {
         const userId = req.user.id
@@ -37,7 +37,7 @@ exports.getUserTask = [auth, async (req, res) => {
             return res.status(400).json({ error: 'Invalid userId format' });
         }
 
-        // Query the database for journals
+        // Query the database for tasks
         const tasks = await Task.find({ userId });
         return res.status(200).json(tasks);
     } catch (error) {
@@ -90,10 +90,7 @@ exports.editTask = async (req, res) => {
             return res.status(404).json({ message: 'Task not found.' });
         }
 
-        // Authorization check
-        // if (journal.userId.toString() !== req.user.id) {
-        //     return res.status(403).json({ message: 'You are not authorized to update this entry.' });
-        // }
+
 
         // Update fields
         task.title = title || task.title;

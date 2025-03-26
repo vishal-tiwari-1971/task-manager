@@ -62,8 +62,8 @@ console.log('Complition:', complition);
 
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
-    
+    <div className="bg-gray-900 w-full min-h-screen flex-col items-center">
+    <h1 className='text-2xl text-white text-center'>Create a Task</h1>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto mt-8 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
         <div className="mb-5">
           <label htmlFor="title" className="block text-sm font-medium text-gray-900 dark:text-white">

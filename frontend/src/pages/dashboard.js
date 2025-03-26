@@ -72,7 +72,12 @@ const Dashboard = () => {
 
       if (response.status === 200) {
         // Remove the deleted task from the UI
-        setUserTask(userTask.filter((task) => task._id !== id));
+        setUserTask((prevTasks) => {
+          const updatedTasks = prevTasks.filter((task) => task._id !== id);
+          // Filter tasks again for incompleted and completed tasks
+          filterTasks(updatedTasks);
+          return updatedTasks;
+        });
       } else {
         setError("An error occurred while deleting the task.");
       }
@@ -117,14 +122,13 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dark:bg-gray-900 text-black bg:text-white">
+    <div className="bg-gray-900 text-black bg:text-white">
      
       <div className="dashboard-container p-6">
-       
-     <h1 className='text-blue-200'>Your personalised tasks is here</h1>
+      
      <section className="bg-white dark:bg-gray-900">
-      <h1 className="text-3xl font-bold mb-6 text-black dark:text-white">Your Dashboard</h1>
-      <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">Incomplete tasks</h2>
+      <h1 className="text-3xl font-bold mb-6 text-black dark:text-white text-center">Your Task Dashboard</h1>
+      <h2 className="text-2xl font-semibold mb-4 text-white text-center">Incomplete tasks</h2>
       <div className="container mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {incompletedTask.map((task) => (
@@ -134,12 +138,10 @@ const Dashboard = () => {
             >
              
               <h3 className="text-lg font-semibold mb-2 text-center text-black dark:text-white">
-                {task.title}
+               <Link to={`/task/${task._id}`}> {task.title}</Link>
               </h3>
               <p className="text-gray-600 mb-2 text-left line-clamp-2 dark:text-white">
-              {task.description.length > 100 
-    ? `${task.description.slice(0, 100)}...` 
-    : task.description}
+              {task.description}
               </p>
               <div className="flex space-x-2 mt-4">
                 <Link to={`/edit/${task._id}`}>
@@ -154,17 +156,17 @@ const Dashboard = () => {
                   Delete
                 </button>
                 <button
-                  className="px-4 py-2 bg-green-400 text-white rounded hover:bg-green-700"
+                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-800"
                   onClick={() => handleComplete(task._id)}
                 >
-                  Mark as Complete
+                  Completed
                 </button>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">Completed tasks</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-white text-center">Completed tasks</h2>
       <div className="container mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {completedTask.map((task) => (
@@ -177,20 +179,24 @@ const Dashboard = () => {
                 {task.title}
               </h3>
               <p className="text-gray-600 mb-2 text-left line-clamp-2 dark:text-white">
-              {task.description.length > 100 
-    ? `${task.description.slice(0, 100)}...` 
-    : task.description}
+              { task.description}
               </p>
-              
+              <div className='flex justify-center  space-x-2 mt-4'><button
+                  className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                  onClick={() => handleDelete(task._id)}
+                >
+                  Delete
+                </button>
+                </div>
             </div>
           ))}
         </div>
       </div>
     </section>
-     <div className="flex flex-wrap gap-4">
+     <div className="flex flex-wrap gap-4 justify-center mt-8">
               <Link
                 to="/create"
-                className="inline-flex items-center px-5 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"
+                className="inline-flex  items-center px-5 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"
               >
                 Create a Task
                 <svg
