@@ -1,5 +1,5 @@
 require("dotenv").config()
-require("./config/database").connect()
+require("./Config/database").connect()
 // const User=require('./Models/user')
 // const Task=require('./Models/task')
 const express = require('express')
