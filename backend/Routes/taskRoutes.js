@@ -7,8 +7,8 @@ const User = require('../Models/user');
 
 
    
-// get by journal user id
-// router.get('/task/:id', taskController.getEntryById)
+// get task by id
+router.get('/single/:id', taskController.getTaskById)
 
 // Create a new task 
 router.post('/create', auth, taskController.createTask)

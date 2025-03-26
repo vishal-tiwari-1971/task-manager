@@ -9,6 +9,7 @@ import EditTaskPage from './pages/editTask';
 import './index.css';
 import './App.css';
 import Dashboard from './pages/dashboard';
+import Task from './pages/task'
 // import Task from './Components/Journal';
 // import Update from './Components/Update.Journal';
 
@@ -40,7 +41,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/edit/:id" element={<EditTaskPage />} /> 
-        {/* <Route path="/update/:id" element={<Update />} />  */}
+        <Route path="/task/:id" element={<Task />} /> 
 
       </Routes>
     </Router>

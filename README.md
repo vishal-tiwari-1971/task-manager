@@ -23,7 +23,7 @@ Task Manager is a web application to create personalised tasks , delete and mark
   - [Deployment](#deployment)
     - [Backend Deployment](#backend-deployment)
     - [Frontend Deployment](#frontend-deployment)
-  - [License](#license)
+  - [UI](#ui)
 
 ## Features
 - User authentication (JWT-based login/register)
@@ -106,7 +106,7 @@ Task Manager is a web application to create personalised tasks , delete and mark
 
 ### Task Routes
 - `GET /task/getUserTask` - Get all task of a user (requires authentication)
-- `POST /task/creatw` - Create a new task (requires authentication)
+- `POST /task/create` - Create a new task (requires authentication)
 - `PUT  /task/edit/:id` - Edit a existing task (requires authentication)
 - `DELETE /task/:id` - Delete a task (requires authentication)
 
@@ -123,5 +123,15 @@ Task Manager is a web application to create personalised tasks , delete and mark
    - Import the repository into Vercel.
    - Set the `REACT_APP_API_URL` environment variable in Vercel settings.
 
-## License
-This project is licensed under the MIT License.
+## UI
+![Home Page](./frontend/src/assets/Screenshot%202025-03-26%20222943.png)
+
+![Signup Page](./frontend/src/assets/Screenshot%202025-03-26%20222855.png)
+
+![Login Page](./frontend/src/assets/Screenshot%202025-03-26%20222848.png)
+
+![Task Page](./frontend/src/assets/Screenshot%202025-03-26%20222744.png)
+
+![Edit Task](./frontend/src/assets/Screenshot%202025-03-26%20222803.png)
+
+![Task](./frontend/src/assets/Screenshot%202025-03-26%20230400.png)
