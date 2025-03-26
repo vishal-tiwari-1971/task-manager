@@ -100,17 +100,15 @@ Task Manager is a web application to create personalised tasks , delete and mark
 
 ## API Endpoints
 ### User Routes
-- `POST /user/register` - Register a new user
+- `POST /user/signup` - Register a new user
 - `POST /user/login` - Login a user
-- `GET /user/profile` - Get user profile (requires authentication)
 
-### Journal Routes
-- `GET /journal` - Get all public journal entries
-- `GET /journal/:id` - Get a journal entry by ID
-- `GET /journal/user` - Get journal entries by user ID (requires authentication)
-- `POST /journal` - Create a new journal entry (requires authentication)
-- `PUT /journal/:id` - Update a journal entry (requires authentication)
-- `DELETE /journal/:id` - Delete a journal entry (requires authentication)
+
+### Task Routes
+- `GET /task/getUserTask` - Get all task of a user (requires authentication)
+- `POST /task/creatw` - Create a new task (requires authentication)
+- `PUT  /task/edit/:id` - Edit a existing task (requires authentication)
+- `DELETE /task/:id` - Delete a task (requires authentication)
 
 
 ## Deployment
