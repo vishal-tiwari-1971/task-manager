@@ -28,12 +28,6 @@ app.use(cors({
 console.log(process.env.FRONTEND_URL);
 
 
-// Configure CORS
-// const corsOptions = {
-//   origin: 'http://localhost:3000', // Allow this specific origin
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-//   credentials: true, // Include cookies if needed
-// };
 
 
 
