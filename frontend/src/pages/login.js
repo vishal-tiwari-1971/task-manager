@@ -57,11 +57,16 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     // submit data  
-    submitData()
+    const response= await submitData()
+    if(response.success){
     setuserEmail("")
     setuserPassword("")
     setErrorMessage("")
   }
+  else{
+    setErrorMessage("Invalid email or password. Please try again.");
+  }
+}
 
   return (
     <div>
